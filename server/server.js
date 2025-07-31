@@ -41,16 +41,8 @@ io.on("connection", (socket) => {
 })
 
 //Middleware setup
-const FRONTEND_ORIGIN = "https://chat-app-psi-hazel.vercel.app";
-
-// CORS Middleware
-app.use(cors({
-    origin: FRONTEND_ORIGIN,
-    credentials: true,
-}));
-
-app.use(express.json({ limit: "4mb" }));
-
+app.use(express.json({limit: "4mb"}));
+app.use(cors());
 
 
 //Route setup
