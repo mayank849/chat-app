@@ -17,8 +17,11 @@ const server = http.createServer(app);
 
 //Initilize socket.io server
 export const io = new Server(server, {
-    cors: {origin: "https://chat-app-psi-hazel.vercel.app"}
-})
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 //store online users
 export const userSocketMap = {};
