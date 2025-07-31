@@ -41,15 +41,15 @@ io.on("connection", (socket) => {
 })
 
 //Middleware setup
-// Middleware setup
-app.use(express.json({ limit: "4mb" }));
+const FRONTEND_ORIGIN = "https://chat-app-psi-hazel.vercel.app";
 
-const allowedOrigins = ["https://chat-app-psi-hazel.vercel.app"];
-
+// CORS Middleware
 app.use(cors({
-    origin: allowedOrigins,
+    origin: FRONTEND_ORIGIN,
     credentials: true,
 }));
+
+app.use(express.json({ limit: "4mb" }));
 
 
 
