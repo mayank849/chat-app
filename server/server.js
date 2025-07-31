@@ -8,14 +8,16 @@ import messageRouter from "./routes/messageRoutes.js";
 import { Server } from "socket.io";
 import { Socket } from "dgram";
 
+
 //create express app and HTTP server
 const app = express();
+app.use(cors());
 const server = http.createServer(app);
 
 
 //Initilize socket.io server
 export const io = new Server(server, {
-    cors: {origin: "*"}
+    cors: {origin: "https://chat-app-psi-hazel.vercel.app"}
 })
 
 //store online users
@@ -42,7 +44,7 @@ io.on("connection", (socket) => {
 
 //Middleware setup
 app.use(express.json({limit: "4mb"}));
-app.use(cors());
+
 
 
 //Route setup
